@@ -1,0 +1,46 @@
+{
+  "name": "wings4",
+  "version": "4.4.1",
+  "description": "A FeathersJS 4-Way reactive data sync for any frontend framework",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trinly01/feathers-wings.git"
+  },
+  "bugs": {
+    "url": "https://github.com/trinly01/feathers-wings/issues"
+  },
+  "homepage": "https://github.com/trinly01/feathers-wings",
+  "keywords": [
+    "Feathers",
+    "FeathersJS",
+    "Vue",
+    "VueJS",
+    "Angular",
+    "Angular",
+    "React",
+    "ReactJS",
+    "Wings",
+    "WingsJS",
+    "reactive",
+    "observables",
+    "observable"
+  ],
+  "author": "Trinmar A Boado <timi.boado@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@feathersjs/authentication-client": "^4.4.1",
+    "@feathersjs/client": "^4.4.1",
+    "@feathersjs/socketio-client": "^4.4.1",
+    "babel-loader": "^8.0.6",
+    "lodash": "^4.17.15",
+    "socket.io-client": "^2.3.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
