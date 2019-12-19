@@ -38,6 +38,42 @@ export default (host) => {
       storage: window.localStorage // Passing a WebStorage-compatible object to enable automatic storage on the client.
     }))
 
+  let getHost = (url) => {
+    let arr = url.split('/')
+    return arr[0] + '//' + arr[2]
+  }
+
+  app.authenticateSSO = (url) => {
+    let ifrm = document.createElement('iframe')
+    ifrm.setAttribute('src', url)
+    ifrm.style.width = '0px'
+    ifrm.style.height = '0px'
+    document.body.appendChild(ifrm)
+    window.addEventListener('message', result => {
+      let data = result.data
+      if (result.origin === getHost(url) && data && data.accessToken) {
+        // console.log('result', data)
+        app.authenticate({
+          strategy: 'sso',
+          jwt: data.accessToken
+        })
+      }
+    }, true) // once
+  }
+
+  app.enableSSO = host => {
+    app.on('login', (result) => {
+      result.sso = true
+      let parentHost = getHost(document.referrer)
+      // window.parent.postMessage(JSON.stringify(result), 'http://localhost:3030')
+      if (Array.isArray(host) && host.includes(parentHost)) {
+        window.parent.postMessage(result, parentHost)
+      } else {
+        window.parent.postMessage(result, host)
+      }
+    })
+  }
+
   app.wingsService = (serviceName, query = {}, conf = {}) => {
     if (!query.query) query.query = {}
     let event = new Event()
