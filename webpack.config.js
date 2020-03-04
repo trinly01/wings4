@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: './feathers-wings.js',
+  entry: './wings4.js',
   output: {
     path: path.resolve('dist'),
     filename: 'index.js',
